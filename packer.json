@@ -1,103 +1,103 @@
 {
-	"variables": {
-		"vm_name": "debian-jessie",
-		"vm_username": "vagrant",
-		"vm_password": "vagrant",
+  "variables": {
+    "vm_name": "debian-jessie",
+    "vm_username": "vagrant",
+    "vm_password": "vagrant",
 
-		"debian_mirror": "http://http.debian.net/debian",
+    "debian_mirror": "http://http.debian.net/debian",
 
-		"docroot": "docroot",
+    "docroot": "docroot",
 
-		"keyboard_layout": "fi",
-		"locale": "en_US",
+    "keyboard_layout": "fi",
+    "locale": "en_US",
 
-		"iso_url_amd64": "http://cdimage.debian.org/cdimage/jessie_di_beta_1/amd64/iso-cd/debian-jessie-DI-b1-amd64-netinst.iso",
-		"iso_checksum_amd64": "a9b76013000ef6b58ea584b57d4e15f109fc62e17dff723b0df75b8d06802740",
+    "iso_url_amd64": "http://cdimage.debian.org/cdimage/jessie_di_beta_1/amd64/iso-cd/debian-jessie-DI-b1-amd64-netinst.iso",
+    "iso_checksum_amd64": "a9b76013000ef6b58ea584b57d4e15f109fc62e17dff723b0df75b8d06802740",
 
-		"iso_url_i386": "http://cdimage.debian.org/cdimage/jessie_di_beta_1/i386/iso-cd/debian-jessie-DI-b1-i386-netinst.iso",
-		"iso_checksum_i386": "189980fffee44056ac5cc54931d76bf549827b9665f75338cb2308f9872a33d2",
+    "iso_url_i386": "http://cdimage.debian.org/cdimage/jessie_di_beta_1/i386/iso-cd/debian-jessie-DI-b1-i386-netinst.iso",
+    "iso_checksum_i386": "189980fffee44056ac5cc54931d76bf549827b9665f75338cb2308f9872a33d2",
 
-		"iso_checksum_type": "sha256",
-	
-		"aws_access_key": "",
-		"aws_secret_key": "",
+    "iso_checksum_type": "sha256",
+  
+    "aws_access_key": "",
+    "aws_secret_key": "",
 
-		"disk_size": 40000,
-		"disk_interface": "sata"
-	},
+    "disk_size": 40000,
+    "disk_interface": "sata"
+  },
 
-	"provisioners": [{
-		"execute_command": "echo '{{user `vm_password`}}' |sudo -S sh '{{.Path}}'",
-		"override": {
-			"virtualbox-iso": {
-				"scripts": [
-					"provision/000-base.sh",
-					"provision/001-remove-packages.sh",
-					"provision/virtualbox.sh",
-					"provision/vagrant.sh",
-					"provision/999-last.sh"
-				]
-			}
-		},
-		"type": "shell"
-	}],
-	"post-processors": ["vagrant"],
+  "provisioners": [{
+    "execute_command": "echo '{{user `vm_password`}}' |sudo -S sh '{{.Path}}'",
+    "override": {
+      "virtualbox-iso": {
+        "scripts": [
+          "provision/000-base.sh",
+          "provision/001-remove-packages.sh",
+          "provision/virtualbox.sh",
+          "provision/vagrant.sh",
+          "provision/999-last.sh"
+        ]
+      }
+    },
+    "type": "shell"
+  }],
+  "post-processors": ["vagrant"],
 
-	"builders": [{
-		"vm_name": "{{user `vm_name`}}-virtualbox-amd64",
+  "builders": [{
+    "vm_name": "{{user `vm_name`}}-virtualbox-amd64",
 
-		"type": "virtualbox-iso",
-		"guest_os_type": "Debian_64",
+    "type": "virtualbox-iso",
+    "guest_os_type": "Debian_64",
 
-		"iso_url": "{{user `iso_url_amd64`}}",
-		"iso_checksum": "{{user `iso_checksum_amd64`}}",
-		"iso_checksum_type": "{{user `iso_checksum_type`}}",
+    "iso_url": "{{user `iso_url_amd64`}}",
+    "iso_checksum": "{{user `iso_checksum_amd64`}}",
+    "iso_checksum_type": "{{user `iso_checksum_type`}}",
 
-		"ssh_username": "{{user `vm_username`}}",
-		"ssh_password": "{{user `vm_password`}}",
-		"ssh_wait_timeout": "10000s",
+    "ssh_username": "{{user `vm_username`}}",
+    "ssh_password": "{{user `vm_password`}}",
+    "ssh_wait_timeout": "10000s",
 
-		"shutdown_command": "echo '{{user `vm_password`}}' |sudo -S shutdown -P now",
+    "shutdown_command": "echo '{{user `vm_password`}}' |sudo -S shutdown -P now",
 
-		"disk_size": "{{user `disk_size`}}",
-		"hard_drive_interface": "{{user `disk_interface`}}",
-		"iso_interface": "{{user `disk_interface`}}",
+    "disk_size": "{{user `disk_size`}}",
+    "hard_drive_interface": "{{user `disk_interface`}}",
+    "iso_interface": "{{user `disk_interface`}}",
 
-		"guest_additions_mode": "disable",
+    "guest_additions_mode": "disable",
 
-		"headless": true,
-		"http_directory": "{{user `docroot`}}",
-	
-		"boot_command": [
-			"<esc><wait>",
-			"install ",
-			"preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed.cfg ",
-			"debian-installer={{user `locale`}} ",
-			"locale={{user `locale`}} ",
-			"auto ",
-			"kbd-chooser/method={{user `keyboard_layout`}} ",
-			"netcfg/get_hostname={{ .Name }} ",
-			"netcfg/get_domain=vagrantup.com ",
-			"fb=false ",
-			"debconf/frontend=noninteractive ",
-			"console-setup/ask_detect=false ",
-			"console-keymaps-at/keymap={{user `keyboard_layout`}} ",
-			"keyboard-configuration/xkb-keymap={{ user `keyboard_layout`}} ",
-			"<enter><wait>"
-		],
-		"vboxmanage": [
-			[
-				"modifyvm",
-				"{{.Name}}",
-				"--memory",
-				"1024"
-			],
-			[
-				"modifyvm",
-				"{{.Name}}",
-				"--cpus",
-				"1"
-			]
-		]
-	}]
+    "headless": true,
+    "http_directory": "{{user `docroot`}}",
+  
+    "boot_command": [
+      "<esc><wait>",
+      "install ",
+      "preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed.cfg ",
+      "debian-installer={{user `locale`}} ",
+      "locale={{user `locale`}} ",
+      "auto ",
+      "kbd-chooser/method={{user `keyboard_layout`}} ",
+      "netcfg/get_hostname={{ .Name }} ",
+      "netcfg/get_domain=vagrantup.com ",
+      "fb=false ",
+      "debconf/frontend=noninteractive ",
+      "console-setup/ask_detect=false ",
+      "console-keymaps-at/keymap={{user `keyboard_layout`}} ",
+      "keyboard-configuration/xkb-keymap={{ user `keyboard_layout`}} ",
+      "<enter><wait>"
+    ],
+    "vboxmanage": [
+      [
+        "modifyvm",
+        "{{.Name}}",
+        "--memory",
+        "1024"
+      ],
+      [
+        "modifyvm",
+        "{{.Name}}",
+        "--cpus",
+        "1"
+      ]
+    ]
+  }]
 }
