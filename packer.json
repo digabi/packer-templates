@@ -3,6 +3,14 @@
     "name": "ypcs/debian-jessie64"
   },
   "variables": {
+    "vm_name": "debian-jessie64",
+
+    "cpu_cores": 1,
+    "memory": 1024,
+
+    "disk_size": 40000,
+    "disk_interface": "sata"
+
     "vm_name": "debian-jessie",
     "vm_username": "vagrant",
     "vm_password": "vagrant",
@@ -25,8 +33,6 @@
     "aws_access_key": "",
     "aws_secret_key": "",
 
-    "disk_size": 40000,
-    "disk_interface": "sata"
   },
 
   "provisioners": [{
@@ -102,13 +108,13 @@
         "modifyvm",
         "{{.Name}}",
         "--memory",
-        "1024"
+        "{{ user `memory`}}"
       ],
       [
         "modifyvm",
         "{{.Name}}",
         "--cpus",
-        "1"
+        "{{ user `cpu_cores`}}"
       ]
     ]
   },
@@ -145,7 +151,13 @@
     "shutdown_command": "echo '{{user `vm_password`}}' |sudo -S shutdown -P now",
     "disk_size": "{{user `disk_size`}}",
     "headless": true,
-    "http_directory": "{{user `docroot`}}"
+    "http_directory": "{{user `docroot`}}",
+
+    "vmx_data": {
+      "cpuid.coresPerSocket": "1",
+      "memsize": "{{user `memory`}}",
+      "numvcpus": "{{user `core`}}"
+    }
 
   }]
 }
