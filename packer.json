@@ -37,6 +37,15 @@
           "provision/vagrant.sh",
           "provision/999-last.sh"
         ]
+      },
+      "vmware-iso": {
+          "scripts": [
+          "provision/000-base.sh",
+          "provision/001-remove-packages.sh",
+          "provision/virtualbox.sh",
+          "provision/vagrant.sh",
+          "provision/999-last.sh"
+        ]
       }
     },
     "type": "shell"
@@ -76,7 +85,7 @@
       "locale={{user `locale`}} ",
       "auto ",
       "kbd-chooser/method={{user `keyboard_layout`}} ",
-      "netcfg/get_hostname={{ .Name }} ",
+      "netcfg/get_hostname={{user `vm_name` }} ",
       "netcfg/get_domain=vagrantup.com ",
       "fb=false ",
       "debconf/frontend=noninteractive ",
@@ -99,5 +108,40 @@
         "1"
       ]
     ]
+  },
+  {
+    "vm_name": "{{user `vm_name`}}-vmware-amd64",
+    "type": "vmware-iso",
+    "guest_os_type": "Debian_64",
+    "iso_url": "{{user `iso_url_amd64`}}",
+    "iso_checksum": "{{user `iso_checksum_amd64`}}",
+    "iso_checksum_type": "{{user `iso_checksum_type`}}",
+
+    "boot_command": [
+      "<esc><wait>",
+      "install ",
+      "preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed.cfg ",
+      "debian-installer={{user `locale`}} ",
+      "locale={{user `locale`}} ",
+      "auto ",
+      "kbd-chooser/method={{user `keyboard_layout`}} ",
+      "netcfg/get_hostname={{user `vm_name` }} ",
+      "netcfg/get_domain=vagrantup.com ",
+      "fb=false ",
+      "debconf/frontend=noninteractive ",
+      "console-setup/ask_detect=false ",
+      "console-keymaps-at/keymap={{user `keyboard_layout`}} ",
+      "keyboard-configuration/xkb-keymap={{ user `keyboard_layout`}} ",
+      "<enter><wait>"
+    ],
+
+    "ssh_username": "{{user `vm_username`}}",
+    "ssh_password": "{{user `vm_password`}}",
+    "ssh_wait_timeout": "10000s",
+    "shutdown_command": "echo '{{user `vm_password`}}' |sudo -S shutdown -P now",
+    "disk_size": "{{user `disk_size`}}",
+    "headless": true,
+    "http_directory": "{{user `docroot`}}"
+
   }]
 }
