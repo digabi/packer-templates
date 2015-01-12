@@ -1,17 +1,13 @@
 {
-  "push": {
-    "name": "ypcs/debian-jessie64"
-  },
   "variables": {
-    "vm_name": "debian-jessie64",
+    "vm_name": "debian-jessie-amd64",
 
     "cpu_cores": 1,
     "memory": 1024,
 
     "disk_size": 40000,
-    "disk_interface": "sata"
+    "disk_interface": "sata",
 
-    "vm_name": "debian-jessie",
     "vm_username": "vagrant",
     "vm_password": "vagrant",
 
@@ -31,7 +27,7 @@
     "iso_checksum_type": "sha256",
   
     "aws_access_key": "",
-    "aws_secret_key": "",
+    "aws_secret_key": ""
 
   },
 
@@ -62,7 +58,7 @@
   "post-processors": ["vagrant"],
 
   "builders": [{
-    "vm_name": "{{user `vm_name`}}-virtualbox-amd64",
+    "vm_name": "{{user `vm_name`}}",
 
     "type": "virtualbox-iso",
     "guest_os_type": "Debian_64",
@@ -119,9 +115,9 @@
     ]
   },
   {
-    "vm_name": "{{user `vm_name`}}-vmware-amd64",
+    "vm_name": "{{user `vm_name`}}",
     "type": "vmware-iso",
-    "guest_os_type": "Debian_64",
+    "guest_os_type": "debian7-64",
     "iso_url": "{{user `iso_url_amd64`}}",
     "iso_checksum": "{{user `iso_checksum_amd64`}}",
     "iso_checksum_type": "{{user `iso_checksum_type`}}",
@@ -156,7 +152,7 @@
     "vmx_data": {
       "cpuid.coresPerSocket": "1",
       "memsize": "{{user `memory`}}",
-      "numvcpus": "{{user `core`}}"
+      "numvcpus": "{{user `cpu_cores`}}"
     }
 
   }]
