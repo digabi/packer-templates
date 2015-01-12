@@ -42,7 +42,7 @@
           "scripts": [
           "provision/000-base.sh",
           "provision/001-remove-packages.sh",
-          "provision/virtualbox.sh",
+          "provision/vmware.sh",
           "provision/vagrant.sh",
           "provision/999-last.sh"
         ]
@@ -116,6 +116,7 @@
     "iso_url": "{{user `iso_url_amd64`}}",
     "iso_checksum": "{{user `iso_checksum_amd64`}}",
     "iso_checksum_type": "{{user `iso_checksum_type`}}",
+    "tools_upload_flavor": "linux",
 
     "boot_command": [
       "<esc><wait>",
