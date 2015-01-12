@@ -1,4 +1,7 @@
 {
+  "push": {
+    "name": "ypcs/debian-jessie64"
+  },
   "variables": {
     "vm_name": "debian-jessie",
     "vm_username": "vagrant",
