@@ -124,7 +124,7 @@
     "tools_upload_flavor": "linux",
 
     "boot_command": [
-      "<esc><wait><wait><wait><wait><wait><wait>",
+      "<esc><wait>",
       "install ",
       "preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed.cfg ",
       "debian-installer={{user `locale`}} ",
@@ -138,7 +138,7 @@
       "console-setup/ask_detect=false ",
       "console-keymaps-at/keymap={{user `keyboard_layout`}} ",
       "keyboard-configuration/xkb-keymap={{ user `keyboard_layout`}} ",
-      "<enter><wait><wait><wait><wait>"
+      "<enter><wait>"
     ],
 
     "ssh_username": "{{user `vm_username`}}",
