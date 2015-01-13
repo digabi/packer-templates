@@ -21,6 +21,12 @@ deb http://security.debian.org/ jessie/updates main contrib non-free
 deb-src http://security.debian.org/ jessie/updates main contrib non-free
 EOF
 
+echo "I: Remove DHCP leases..."
+rm /var/lib/dhcp/*
+
+echo "I: Clean persistent network devices..."
+echo "# cleaned by packer provisioning scripts" >/etc/udev/rules.d/70-persistent-net.rules
+
 # Zero out the free space to save space in the final image:
 dd if=/dev/zero of=/EMPTY bs=1M
 rm -f /EMPTY
