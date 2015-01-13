@@ -10,8 +10,10 @@ all:
 
 clean:
 	rm -rf output-*
-	rm -rf packer_cache
 	rm -f *.box
+
+purge:	clean
+	rm -rf packer_cache
 
 validate:
 	$(PACKER) validate $(PACKER_CONFIG)
