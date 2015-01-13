@@ -1,5 +1,6 @@
 {
   "variables": {
+    "build_id": 0,
     "vm_name": "debian-jessie-amd64",
 
     "cpu_cores": 1,
@@ -55,11 +56,15 @@
     },
     "type": "shell"
   }],
-  "post-processors": ["vagrant"],
+  "post-processors": [
+    {
+      "type": "vagrant",
+      "output": "vagrant_{{user `vm_name`}}_{{.Provider}}_{{user `build_id`}}.box"
+    }
+  ],
 
   "builders": [{
     "vm_name": "{{user `vm_name`}}",
-
     "type": "virtualbox-iso",
     "guest_os_type": "Debian_64",
 
