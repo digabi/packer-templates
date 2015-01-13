@@ -1,5 +1,7 @@
 #!/bin/sh
 
+echo "$(date)" >/etc/vagrant_box_build_time
+
 export DEBIAN_FRONTEND="noninteractive"
 
 echo "I: Add sudo permissions to user vagrant..."
