@@ -12,13 +12,14 @@ cleanup() {
 trap cleanup EXIT
 
 VM_NAME="debian-jessie-amd64"
-VM_UUID="$(vboxmanage list vms |grep ^\"${VM_NAME}\" |cut -d' ' -f2)"
+VM_UUID="$(vboxmanage list vms |grep ^\"${VM_NAME}\" |cut -d' ' -f2 || echo "")"
 
 if [ "${VM_UUID}" != "" ]
 then
     echo "I: Previous VM exists (${VM_UUID}), trying to poweroff & destroy..."
-    vboxmanage controlvm "${VM_UUID}" poweroff
-    vboxmanage unregistervm --delete "${VM_UUID}"
+    sleep 30
+    vboxmanage controlvm "${VM_UUID}" poweroff || echo "W: Can't poweroff virtual machine."
+    vboxmanage unregistervm --delete "${VM_UUID}" || echo "W: Can't remove virtual machine."
 fi
 
 make clean
