@@ -9,7 +9,7 @@ cleanup() {
 trap cleanup EXIT
 
 VM_NAME="debian-jessie-amd64"
-VM_UUID="$(vboxmanage list vms |grep ^\"${VM_NAME}\" |cut -d' ' -f1)"
+VM_UUID="$(vboxmanage list vms |grep ^\"${VM_NAME}\" |cut -d' ' -f2)"
 
 if [ "${VM_UUID}" != "" ]
 then
