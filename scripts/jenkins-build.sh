@@ -8,6 +8,8 @@ cleanup() {
 
 trap cleanup EXIT
 
+vboxmanage unregistervm --delete "debian-jessie-amd64" || echo "I: No previous VM."
+
 make clean
 make build BUILD_ID=${BUILD_ID:-$(date +%Y-%m%-d_%H-%M-%S)}.${BUILD_NUMBER:-0} DEBIAN_MIRROR=${DEBIAN_MIRROR:-http://http.debian.net/debian}
 
