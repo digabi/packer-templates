@@ -5,6 +5,10 @@ cat > /etc/sudoers.d/vagrant << EOF
 vagrant		ALL=(ALL) NOPASSWD: ALL
 EOF
 
+echo "I: Disable DNS checks to speed-up SSH logins..."
+echo "UseDNS no" >>/etc/ssh/sshd_config
+service ssh restart
+
 echo "I: Add pubkey for vagrant..."
 mkdir -p /home/vagrant/.ssh
 cat > /home/vagrant/.ssh/authorized_keys << EOF
