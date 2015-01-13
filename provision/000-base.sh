@@ -1,5 +1,7 @@
 #!/bin/sh
 
+export DEBIAN_FRONTEND="noninteractive"
+
 echo "I: Add sudo permissions to user vagrant..."
 cat > /etc/sudoers.d/vagrant << EOF
 vagrant		ALL=(ALL) NOPASSWD: ALL
@@ -44,3 +46,5 @@ echo "pre-up sleep 5" >> /etc/network/interfaces
 sed -i 's,^GRUB_TIMEOUT=5,GRUB_TIMEOUT=1,g' /etc/default/grub
 update-grub
 
+
+apt-get -y install build-essential linux-headers-$(uname -r)

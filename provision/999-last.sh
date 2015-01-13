@@ -1,5 +1,8 @@
 #!/bin/sh
 
+export DEBIAN_FRONTEND="noninteractive"
+apt-get -y remove build-essential linux-headers-$(uname -r)
+
 # Clean downloaded APT packages
 apt-get -y autoremove
 apt-get clean
