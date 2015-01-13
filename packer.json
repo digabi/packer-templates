@@ -74,7 +74,7 @@
 
     "ssh_username": "{{user `vm_username`}}",
     "ssh_password": "{{user `vm_password`}}",
-    "ssh_wait_timeout": "10000s",
+    "ssh_wait_timeout": "1000s",
 
     "shutdown_command": "echo '{{user `vm_password`}}' |sudo -S shutdown -P now",
 
