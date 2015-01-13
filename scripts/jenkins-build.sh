@@ -2,6 +2,9 @@
 
 set -e
 
+echo "I: Clean existing boxes..."
+rm -f *.box
+
 cleanup() {
     make clean
 }
