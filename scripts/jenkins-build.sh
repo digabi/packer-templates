@@ -33,11 +33,11 @@ do
     echo "I: Add box ${box} to vagrant using provider ${PROVIDER}..."
     case "${PROVIDER}" in
         virtualbox)
-            ${VAGRANT} box list
-            echo ${VAGRANT} box remove ...
-            echo ${VAGRANT} box add --provider=${PROVIDER} ${NAME} ${box}
+            echo ${VAGRANT} box add --force --provider=${PROVIDER} ${NAME} ${box}
         ;;
         vmware)
+            PROVIDER="${PROVIDER}_desktop"
+            echo ${VAGRANT} box add --force --provider=${PROVIDER} ${NAME} ${box}
         ;;
         *)
             echo "W: Unsupported provider ${PROVIDER}."
