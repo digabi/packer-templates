@@ -9,7 +9,7 @@ cleanup() {
 trap cleanup EXIT
 
 make clean
-make build BUILD_ID=${BUILD_ID:-$(date +%Y-%m%-d_%H-%M-%S)}.${BUILD_NUMBER:-0}
+make build BUILD_ID=${BUILD_ID:-$(date +%Y-%m%-d_%H-%M-%S)}.${BUILD_NUMBER:-0} DEBIAN_MIRROR=${DEBIAN_MIRROR:-http://http.debian.net/debian}
 
 VAGRANT="/usr/bin/vagrant"
 BUILD_ONLY="${BUILD_ONLY:-0}"
