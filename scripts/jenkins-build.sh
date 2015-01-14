@@ -46,7 +46,12 @@ fi
 
 for box in *.box
 do
-    NAME="$(echo ${box} |cut -d_ -f2)"
+    if [ -z "${VAGRANT_BOX_NAME}" ]
+    then
+        NAME="$(echo ${box} |cut -d_ -f2)"
+    else 
+        NAME="${VAGRANT_BOX_NAME:-box}"
+    fi
     PROVIDER="$(echo ${box} |cut -d_ -f3)"
     echo "I: Add box ${box} to vagrant using provider ${PROVIDER}..."
     case "${PROVIDER}" in
