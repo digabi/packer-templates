@@ -41,6 +41,7 @@
           "provision/001-remove-packages.sh",
           "provision/virtualbox.sh",
           "provision/vagrant.sh",
+          "provision/800-digabi.sh",
           "provision/999-last.sh"
         ]
       },
@@ -50,6 +51,7 @@
           "provision/001-remove-packages.sh",
           "provision/vmware.sh",
           "provision/vagrant.sh",
+          "provision/800-digabi.sh",
           "provision/999-last.sh"
         ]
       }
