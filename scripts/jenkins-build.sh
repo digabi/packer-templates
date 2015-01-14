@@ -20,6 +20,10 @@ then
     sleep 30
     vboxmanage controlvm "${VM_UUID}" poweroff || echo "W: Can't poweroff virtual machine."
     vboxmanage unregistervm --delete "${VM_UUID}" || echo "W: Can't remove virtual machine."
+elif [ -f "~/VirtualBox VMs/debian-jessie-amd64/debian-jessie-amd64.vbox" ]
+then
+    echo "I: Removing stale VirtualBox configuration... ('.vbox)."
+    rm -f "~/VirtualBox VMs/debian-jessie-amd64/debian-jessie-amd64.vbox"
 fi
 
 make clean
