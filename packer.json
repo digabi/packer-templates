@@ -12,6 +12,8 @@
     "vm_username": "vagrant",
     "vm_password": "vagrant",
 
+    "debian_mirror_hostname": "http.debian.net",
+    "debian_mirror_directory": "/debian",
     "debian_mirror": "http://http.debian.net/debian",
 
     "docroot": "docroot",
@@ -104,6 +106,8 @@
       "console-setup/ask_detect=false ",
       "console-keymaps-at/keymap={{user `keyboard_layout`}} ",
       "keyboard-configuration/xkb-keymap={{ user `keyboard_layout`}} ",
+      "mirror/http/hostname={{ user `debian_mirror_hostname`}} ",
+      "mirror/http/directory={{ user `debian_mirror_directory`}} ",
       "<enter><wait>"
     ],
     "vboxmanage": [
@@ -145,6 +149,8 @@
       "console-setup/ask_detect=false ",
       "console-keymaps-at/keymap={{user `keyboard_layout`}} ",
       "keyboard-configuration/xkb-keymap={{ user `keyboard_layout`}} ",
+      "mirror/http/hostname={{ user `debian_mirror_hostname`}} ",
+      "mirror/http/directory={{ user `debian_mirror_directory`}} ",
       "<enter><wait>"
     ],
 
