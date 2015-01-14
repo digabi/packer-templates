@@ -106,8 +106,8 @@
       "console-setup/ask_detect=false ",
       "console-keymaps-at/keymap={{user `keyboard_layout`}} ",
       "keyboard-configuration/xkb-keymap={{ user `keyboard_layout`}} ",
-      "mirror/http/hostname={{ user `debian_mirror_hostname`}} ",
-      "mirror/http/directory={{ user `debian_mirror_directory`}} ",
+      "mirror/http/hostname={{ user `debian_mirror_hostname`}} " ,
+      "mirror/http/directory={{ user `debian_mirror_directory`}} ",
       "<enter><wait>"
     ],
     "vboxmanage": [
@@ -149,8 +149,8 @@
       "console-setup/ask_detect=false ",
       "console-keymaps-at/keymap={{user `keyboard_layout`}} ",
       "keyboard-configuration/xkb-keymap={{ user `keyboard_layout`}} ",
-      "mirror/http/hostname={{ user `debian_mirror_hostname`}} ",
-      "mirror/http/directory={{ user `debian_mirror_directory`}} ",
+      "mirror/http/hostname={{ user `debian_mirror_hostname`}} " ,
+      "mirror/http/directory={{ user `debian_mirror_directory`}} ",
       "<enter><wait>"
     ],
 
