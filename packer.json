@@ -120,6 +120,12 @@
         "{{.Name}}",
         "--cpus",
         "{{ user `cpu_cores`}}"
+      ],
+      [
+        "modifyvm",
+        "{{.Name}}",
+        "--nictype1",
+        "virtio"
       ]
     ]
   },
