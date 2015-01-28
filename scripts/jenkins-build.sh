@@ -27,4 +27,4 @@ then
 fi
 
 make clean
-make build BUILD_ID=${BUILD_ID:-$(date +%Y-%m%-d_%H-%M-%S)}.${BUILD_NUMBER:-0} DEBIAN_MIRROR=${DEBIAN_MIRROR:-http://http.debian.net/debian}
+make build BUILD_ID=$(date +%Y-%m%-d_%H-%M-%S).${BUILD_NUMBER:-0} DEBIAN_MIRROR=${DEBIAN_MIRROR:-http://http.debian.net/debian}
