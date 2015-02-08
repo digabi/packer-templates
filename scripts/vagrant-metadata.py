@@ -8,6 +8,8 @@ import logging
 
 """Create metadata.json to publish versioned Vagrant boxes
 
+See <https://superuser.com/questions/747699/vagrant-box-url-for-json-metadata-file>
+
 Usage:
 
 vagrant-metadata.py --version=1.0.123 --virtualbox=virtualbox.box --vmware=vmware.box \
