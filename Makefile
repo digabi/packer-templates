@@ -26,7 +26,7 @@ build: validate
 	$(PACKER) build -var "build_id=$(BUILD_ID)" -var "debian_mirror=$(DEBIAN_MIRROR)" -var "debian_mirror_hostname=$(_DEBIAN_MIRROR_HOSTNAME)" -var "debian_mirror_directory=$(_DEBIAN_MIRROR_DIRECTORY)" $(PACKER_CONFIG)
 
 metadata.json:
-	./scripts/vagrant-metadata.py --version=$(VERSION) --outfile=metadata.json
+	./scripts/vagrant_metadata.py --version=$(VERSION) --outfile=metadata.json
 
 debug:
 	@echo "Build-ID:         $(BUILD_ID)"
