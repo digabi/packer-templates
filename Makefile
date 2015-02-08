@@ -12,6 +12,10 @@ _DEBIAN_MIRROR_DIRECTORY = $(shell echo $(DEBIAN_MIRROR) |sed 's,http://[^/]*,,g
 BOX_VIRTUALBOX = $(shell ls vagrant_*_virtualbox_*.box |head -n1)
 BOX_VMWARE = $(shell ls vagrant_*_vmware_*.box |head -n1)
 
+S3CMD ?= s3cmd
+S3BUCKET ?= ypcs-cdn
+S3PREFIX ?= vagrant
+
 all:
 
 clean:
@@ -30,6 +34,10 @@ build: validate
 
 metadata.json:
 	./scripts/vagrant_metadata.py --version=$(VERSION) --outfile=metadata.json --virtualbox=$(BOX_VIRTUALBOX) --vmware=$(BOX_VMWARE)
+
+upload: build metadata.json
+	$(S3CMD) -m application/json put metadata.json s3://$(S3BUCKET)/$(S3PREFIX)/
+	$(S3CMD) vagrant_*.box s3://$(S3BUCKET)/$(S3PREFIX)/
 
 debug:
 	@echo "Build-ID:         $(BUILD_ID)"
