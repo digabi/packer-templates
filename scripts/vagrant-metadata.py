@@ -27,13 +27,22 @@ def main(args):
             }]
         }]
     }
-    print json.dumps(data)
+    if args.outfile == '-':
+        print json.dumps(data)
+    else:
+        if os.path.exists(args.outfile):
+            print "File already exists, not creating: %s" % args.outfile
+            return 1
+        with open(args.outfile, 'w') as ofile:
+            ofile.write(json.dumps(data))        
+    return 0
 
 def run():
     from argparse import ArgumentParser
     parser = ArgumentParser()
     parser.add_argument('--version', help=_('Vagrant box version.'), default=1)
     parser.add_argument('-b', '--base-url', dest='base_url', default='https://cdn.ypcs.fi/vagrant')
+    parser.add_argument('-o', '--outfile', dest='outfile', default='-')
     args = parser.parse_args()
     sys.exit(main(args))
 
