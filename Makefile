@@ -9,6 +9,9 @@ DEBIAN_MIRROR ?= http://http.debian.net/debian
 _DEBIAN_MIRROR_HOSTNAME = $(shell echo $(DEBIAN_MIRROR) |sed 's,^http://,,;s|\/.*||')
 _DEBIAN_MIRROR_DIRECTORY = $(shell echo $(DEBIAN_MIRROR) |sed 's,http://[^/]*,,g')
 
+BOX_VIRTUALBOX = $(shell ls vagrant_*_virtualbox_*.box |head -n1)
+BOX_VMWARE = $(shell ls vagrant_*_vmware_*.box |head -n1)
+
 all:
 
 clean:
@@ -26,7 +29,7 @@ build: validate
 	$(PACKER) build -var "build_id=$(BUILD_ID)" -var "debian_mirror=$(DEBIAN_MIRROR)" -var "debian_mirror_hostname=$(_DEBIAN_MIRROR_HOSTNAME)" -var "debian_mirror_directory=$(_DEBIAN_MIRROR_DIRECTORY)" $(PACKER_CONFIG)
 
 metadata.json:
-	./scripts/vagrant_metadata.py --version=$(VERSION) --outfile=metadata.json
+	./scripts/vagrant_metadata.py --version=$(VERSION) --outfile=metadata.json --virtualbox=$(BOX_VIRTUALBOX) --vmware=$(BOX_VMWARE)
 
 debug:
 	@echo "Build-ID:         $(BUILD_ID)"
