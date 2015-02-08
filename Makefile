@@ -1,11 +1,10 @@
 PACKER ?= packer
 PACKER_CONFIG ?= packer.json
 
-VERSION ?= 1.0.$(shell date +%Y%m%d%H%M%S)
-
 VAGRANT ?= vagrant
 
 BUILD_ID ?= $(shell date +%Y%m%d%H%M%S)
+VERSION ?= 1.0.$(BUILD_ID)
 DEBIAN_MIRROR ?= http://http.debian.net/debian
 _DEBIAN_MIRROR_HOSTNAME = $(shell echo $(DEBIAN_MIRROR) |sed 's,^http://,,;s|\/.*||')
 _DEBIAN_MIRROR_DIRECTORY = $(shell echo $(DEBIAN_MIRROR) |sed 's,http://[^/]*,,g')
