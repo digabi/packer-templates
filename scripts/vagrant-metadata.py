@@ -15,6 +15,10 @@ Usage:
 vagrant-metadata.py --version=1.0.123 --virtualbox=virtualbox.box --vmware=vmware.box \
                     --boxname="ypcs/debian-jessie64.box" -o metadata.json \
                     --baseurl="https://cdn.ypcs.fi/pub"
+
+You can use metadata.json as Vagrantbox config.vm.box_url.
+
+Vagrant will then check if new box version is available.
 """
 
 # Author: Ville Korhonen <ville@xd.fi>
