@@ -4,3 +4,4 @@ packer_cache
 *.ovf
 output-*/*
 .vagrant/*
+metadata.json
