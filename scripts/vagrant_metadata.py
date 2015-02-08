@@ -55,6 +55,8 @@ class VagrantMetadata(object):
 
     def _create_url(self, filename):
         """Create full URL to Vagrant basebox."""
+        if filename.startswith('http'):
+            return filename
         if self._baseurl.endswith('/'):
             url = self._baseurl
         else:
