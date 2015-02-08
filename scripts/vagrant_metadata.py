@@ -63,9 +63,9 @@ class VagrantMetadata(object):
             filename
         )
 
-    def remove(self, provider, version):
-        """Remove box and/or version."""
-        raise NotImplementedError
+    # def remove(self, provider, version):
+    #     """Remove box and/or version."""
+    #     raise NotImplementedError
 
     def add(self, provider, filename, version):
         """Add new provider for version from file."""
