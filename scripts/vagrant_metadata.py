@@ -39,8 +39,9 @@ class VagrantMetadata(object):
     def __init__(self, name, **kwargs):
         self.logger = kwargs.get('logger', logging.getLogger(__name__))
         self._data = {}
-        if 'infile' in kwargs:
-            self.read(filename=kwargs.get('infile'))
+        infile = kwargs.get('infile', None)
+        if infile is not None:
+            self.read(filename=infile)
         self._data['name'] = name
         self._baseurl = kwargs.get('baseurl', DEFAULT_BOX_URL_BASE)
 
