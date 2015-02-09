@@ -2,6 +2,13 @@
 
 set -e
 
+apt-get -y install open-vm-tools
+
+exit 0
+#
+# We're never running this:
+#
+
 apt-get -y install git
 
 mount -o loop -t iso9660 /home/vagrant/linux.iso /media/cdrom
