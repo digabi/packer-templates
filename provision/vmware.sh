@@ -2,7 +2,7 @@
 
 set -e
 
-apt-get -y install open-vm-tools
+apt-get -y install open-vm-tools open-vm-tools-dkms
 
 exit 0
 #
