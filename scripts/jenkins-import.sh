@@ -9,13 +9,16 @@ then
     exit 1
 fi
 
+if [ -n "${VAGRANT_BOX_NAME}" ]
+then
+    VAGRANT_BOX_NAME="${VAGRANT_BOX_NAME}${BITS}"
+fi
+
 for box in *.box
 do
     if [ -z "${VAGRANT_BOX_NAME}" ]
     then
         VAGRANT_BOX_NAME="$(echo ${box} |cut -d_ -f2)"
-    else
-        VAGRANT_BOX_NAME="${VAGRANT_BOX_NAME}${BITS}"
     fi
     PROVIDER="$(echo ${box} |cut -d_ -f3)"
     echo "I: Add box ${box} to vagrant using provider ${PROVIDER}, with name ${VAGRANT_BOX_NAME}..."
