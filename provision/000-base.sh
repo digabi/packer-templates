@@ -48,4 +48,4 @@ echo "pre-up sleep 5" >> /etc/network/interfaces
 sed -i 's,^GRUB_TIMEOUT=5,GRUB_TIMEOUT=1,g' /etc/default/grub
 update-grub
 
-apt-get -y install build-essential linux-headers-$(dpkg --print-architecture)
+apt-get -y install build-essential linux-headers-$(uname -r)
