@@ -1,0 +1,27 @@
+{
+  "description": "Debian Jessie vagrantbox for building all things Digabi",
+  "short_description": "Digabi Basebox",
+  "name": "digabi/vagrantbox",
+  "versions": [
+    {
+      "version": "__BOX_VERSION__",
+      "status": "active",
+      "description_html": "<p>Digabi Basebox</p>",
+      "description_markdown": "Digabi Basebox",
+      "providers": [
+        {
+          "name": "virtualbox",
+          "url": "__VBOX_BOX_URL__",
+          "checksum_type": "sha1",
+          "checksum": "__VBOX_BOX_SHA1__"
+        },
+        {
+          "name": "vmware_workstation",
+          "url": "__VMWARE_BOX_URL__",
+          "checksum_type": "sha1",
+          "checksum": "__VMWARE_BOX_SHA1__"
+        }
+      ]
+    }
+  ]
+}
