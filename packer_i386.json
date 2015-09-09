@@ -1,7 +1,7 @@
 {
   "variables": {
     "build_id": 0,
-    "vm_name": "debian-jessie-i386",
+    "vm_name": "vagrantbox-debian-jessie-i386",
 
     "cpu_cores": 1,
     "memory": 1024,
