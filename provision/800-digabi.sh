@@ -125,7 +125,7 @@ apt-key add ${TEMPFILE}
 rm ${TEMPFILE}
 
 cat >/etc/apt/sources.list.d/digabi.list << EOF
-deb http://dev.digabi.fi/debian jessie main contrib non-free
+deb http://192.168.2.49/digabi jessie main contrib non-free
 EOF
 
 export DEBIAN_FRONTEND="noninteractive"
