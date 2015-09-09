@@ -21,8 +21,8 @@
     "keyboard_layout": "fi",
     "locale": "en_US",
 
-    "iso_url": "http://cdimage.debian.org/debian-cd/current/i386/iso-cd/debian-8.1.0-i386-netinst.iso",
-    "iso_checksum": "caf870a76faa088abeed3fd72ac3e009c27452cf30261d0e461282bf3b0ee874",
+    "iso_url": "http://cdimage.debian.org/debian-cd/current/i386/iso-cd/debian-8.2.0-i386-netinst.iso",
+    "iso_checksum": "e4e8964aaf13a137e87de950f1ffd142ca3980a2db683534018e1ca18993be37",
 
     "iso_checksum_type": "sha256",
   
