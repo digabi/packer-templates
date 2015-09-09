@@ -16,7 +16,7 @@
           "checksum": "__VBOX_BOX_SHA1__"
         },
         {
-          "name": "vmware_workstation",
+          "name": "vmware_desktop",
           "url": "__VMWARE_BOX_URL__",
           "checksum_type": "sha1",
           "checksum": "__VMWARE_BOX_SHA1__"
