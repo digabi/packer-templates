@@ -1,7 +1,7 @@
 {
   "description": "Debian Jessie vagrantbox for building all things Digabi",
   "short_description": "Digabi Basebox",
-  "name": "vagrantbox-debian-jessie-amd64",
+  "name": "vagrantbox-debian-jessie-__ARCH__",
   "versions": [
     {
       "version": "__BOX_VERSION__",

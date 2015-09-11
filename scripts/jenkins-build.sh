@@ -16,9 +16,11 @@ make clean
 case "${BITS}" in
     64)
         CONFIG_FILE=packer_amd64.json
+        ARCH=amd64
         ;;
     32)
         CONFIG_FILE=packer_i386.json
+        ARCH=i386
         ;;
     *)
         echo "Wouldn't know what to do with ${BITS} bits"
@@ -32,12 +34,12 @@ do
         *_vmware_*)
             VMWARE_BOX_URL=${BUILD_URL}/artifact/${box}
             VMWARE_BOX_SHA1=$(sha1sum ${box} | awk '{print $1}')
-            sed -i.bak -e "s|__BOX_VERSION__|${BOX_VERSION}|g" -e "s|__VMWARE_BOX_URL__|${VMWARE_BOX_URL}|g" -e "s|__VMWARE_BOX_SHA1__|${VMWARE_BOX_SHA1}|g" metadata.json
+            sed -i.bak -e "s|__ARCH__|${ARCH}|g" -e "s|__BOX_VERSION__|${BOX_VERSION}|g" -e "s|__VMWARE_BOX_URL__|${VMWARE_BOX_URL}|g" -e "s|__VMWARE_BOX_SHA1__|${VMWARE_BOX_SHA1}|g" metadata.json
             ;;
         *_virtualbox_*)
             VBOX_BOX_URL=${BUILD_URL}/artifact/${box}
             VBOX_BOX_SHA1=$(sha1sum ${box} | awk '{print $1}')
-            sed -i.bak -e "s|__BOX_VERSION__|${BOX_VERSION}|g" -e "s|__VBOX_BOX_URL__|${VBOX_BOX_URL}|g" -e "s|__VBOX_BOX_SHA1__|${VBOX_BOX_SHA1}|g" metadata.json
+            sed -i.bak -e "s|__ARCH__|${ARCH}|g" -e "s|__BOX_VERSION__|${BOX_VERSION}|g" -e "s|__VBOX_BOX_URL__|${VBOX_BOX_URL}|g" -e "s|__VBOX_BOX_SHA1__|${VBOX_BOX_SHA1}|g" metadata.json
             ;;
         *)
             echo "Unknown box ${box}"
