@@ -131,6 +131,6 @@ EOF
 export DEBIAN_FRONTEND="noninteractive"
 apt-get update
 
-apt-get -y install digabi-dev
+apt-get -y -o "Acquire::http::Pipeline-Depth=10" install digabi-dev postgresql postgresql-contrib ruby-dev zip npm nodejs nginx libpq-dev libnss3-tools git rsync curl unzip ruby parallel uuid-runtime netcat-traditional
 
 
