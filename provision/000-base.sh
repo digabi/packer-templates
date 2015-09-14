@@ -1,6 +1,6 @@
 #!/bin/sh
 
-echo "$(date)" >/etc/vagrant_box_build_time
+echo "$(date)" | tee /etc/vagrant_box_build_time
 
 export DEBIAN_FRONTEND="noninteractive"
 
