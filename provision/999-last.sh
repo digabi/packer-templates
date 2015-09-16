@@ -10,12 +10,8 @@ rm -f /var/lib/apt/lists/*
 rm -rf /var/log/installer
 
 cat > /etc/apt/sources.list << EOF
-deb http://http.debian.net/debian jessie main contrib non-free
-deb-src http://http.debian.net/debian jessie main contrib non-free
-deb http://http.debian.net/debian jessie-updates main contrib non-free
-deb-src http://http.debian.net/debian jessie-updates main contrib non-free
-deb http://security.debian.org/ jessie/updates main contrib non-free
-deb-src http://security.debian.org/ jessie/updates main contrib non-free
+deb http://192.168.2.49/debian jessie main contrib non-free
+deb http://192.168.2.49/debian jessie-updates main contrib non-free
 EOF
 
 echo "I: Remove DHCP leases..."
