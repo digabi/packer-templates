@@ -163,8 +163,6 @@
     "disk_size": "{{user `disk_size`}}",
     "headless": true,
     "http_directory": "{{user `docroot`}}",
-    "tools_upload_flavor": "linux",
-    "tools_upload_path": "/tmp/{{.Flavor}}.iso",
 
     "vmx_data": {
       "cpuid.coresPerSocket": "1",
