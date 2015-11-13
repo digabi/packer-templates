@@ -11,6 +11,7 @@ rm -rf /var/log/installer
 
 cat > /etc/apt/sources.list << EOF
 deb http://192.168.2.49/debian jessie main contrib non-free
+deb http://192.168.2.49/debian-security jessie/updates main contrib non-free
 deb http://192.168.2.49/debian jessie-updates main contrib non-free
 EOF
 
