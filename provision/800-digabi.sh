@@ -131,6 +131,6 @@ EOF
 export DEBIAN_FRONTEND="noninteractive"
 apt-get update
 
-apt-get -y -o "Acquire::http::Pipeline-Depth=10" install digabi-dev ruby-dev zip npm nodejs nginx libpq-dev libnss3-tools git rsync curl unzip ruby parallel uuid-runtime netcat-traditional
-
-
+apt-get -y -o "Acquire::http::Pipeline-Depth=10" install digabi-dev ruby-dev zip npm nodejs nginx libpq-dev libnss3-tools git rsync curl unzip ruby parallel uuid-runtime netcat-traditional vlc
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.30.1/install.sh | sudo -u vagrant bash
+sudo -u vagrant /bin/bash -c ". ~/.nvm/nvm.sh; nvm install 4.2.1"
