@@ -219,3 +219,5 @@ su postgres -c "createuser -d vagrant" || true
 sed -i.bak '/127.0.0.1\|::1\/128/s/md5/trust/' /etc/postgresql/9.5/main/pg_hba.conf
 service postgresql restart
 
+echo "I: Upgrade npm"
+npm install -g npm@^2.14.1
