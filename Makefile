@@ -21,7 +21,7 @@ validate:
 	$(PACKER) validate $(CONFIG_PACKER)
 
 build: validate
-	$(PACKER) build -var "build_id=$(BUILD_ID)" -var "debian_mirror=$(DEBIAN_MIRROR)" -var "debian_mirror_hostname=$(_DEBIAN_MIRROR_HOSTNAME)" -var "debian_mirror_directory=$(_DEBIAN_MIRROR_DIRECTORY)" $(CONFIG_PACKER)
+	$(PACKER) build -only vmware-iso -var "build_id=$(BUILD_ID)" -var "debian_mirror=$(DEBIAN_MIRROR)" -var "debian_mirror_hostname=$(_DEBIAN_MIRROR_HOSTNAME)" -var "debian_mirror_directory=$(_DEBIAN_MIRROR_DIRECTORY)" $(CONFIG_PACKER)
 
 debug:
 	@echo "Build-ID:         $(BUILD_ID)"
