@@ -1,12 +1,12 @@
 {
   "variables": {
-    "build_id": 0,
+    "build_id": "0",
     "vm_name": "vagrantbox-debian-jessie-amd64",
 
-    "cpu_cores": 1,
-    "memory": 1024,
+    "cpu_cores": "1",
+    "memory": "1024",
 
-    "disk_size": 100000,
+    "disk_size": "100000",
     "disk_interface": "sata",
 
     "vm_username": "vagrant",
