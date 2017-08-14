@@ -138,7 +138,7 @@ export DEBIAN_FRONTEND="noninteractive"
 
 wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
 cat >/etc/apt/sources.list.d/chrome.list <<EOF
-deb http://dl.google.com/linux/chrome/deb/ unstable main
+deb http://dl.google.com/linux/chrome/deb/ stable main
 EOF
 
 apt-get update
