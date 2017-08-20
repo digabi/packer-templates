@@ -147,7 +147,7 @@ EOF
 
 apt-get update
 
-apt-get -y -o "Acquire::http::Pipeline-Depth=10" install ruby-dev zip npm nodejs nginx libpq-dev google-chrome-unstable libnss3-tools git rsync curl unzip ruby parallel uuid-runtime netcat-traditional vlc locales postgresql-9.5 postgresql-contrib-9.5 texlive-base texlive-latex-base latexmk net-tools
+apt-get -y -o "Acquire::http::Pipeline-Depth=10" install ruby-dev zip nginx libpq-dev google-chrome-unstable libnss3-tools git rsync curl unzip ruby parallel uuid-runtime netcat-traditional vlc locales postgresql-9.5 postgresql-contrib-9.5 texlive-base texlive-latex-base latexmk net-tools
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | sudo -u vagrant bash
 sudo -u vagrant /bin/bash -c ". ~/.nvm/nvm.sh; nvm install 6.11.1 ; nvm install 8.3.0 ; nvm install --lts 6.9.1"
 
@@ -199,8 +199,6 @@ done
 
 EOF
 
-sudo update-alternatives --install /usr/bin/node node /usr/bin/nodejs 10
-
 echo "I: Install finnish locale.."
 sed -i.bak -e '/fi_FI.UTF-8/s/# //' /etc/locale.gen
 locale-gen
@@ -210,5 +208,3 @@ su postgres -c "createuser -d vagrant" || true
 sed -i.bak '/127.0.0.1\|::1\/128/s/md5/trust/' /etc/postgresql/9.5/main/pg_hba.conf
 service postgresql restart
 
-echo "I: Upgrade npm"
-npm install -g npm@^2.14.1
