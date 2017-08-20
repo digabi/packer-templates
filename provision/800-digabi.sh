@@ -158,8 +158,9 @@ cat > /usr/local/bin/npm<<'EOF'
 
 if ! which npm.digabi-real
 then
-    echo "FATAL ERROR: npm.digabi-real not found, should be under .nvm" 1>&2
-    exit 42
+    echo "WARNING: npm.digabi-real not found, should be under .nvm" 1>&2
+    echo "         Ignoring command $@"
+    exit 0
 fi
 
 for retry in $(seq 5)
@@ -198,6 +199,8 @@ do
 done
 
 EOF
+
+chmod +x /usr/local/bin/npm
 
 echo "I: Install finnish locale.."
 sed -i.bak -e '/fi_FI.UTF-8/s/# //' /etc/locale.gen
