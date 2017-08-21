@@ -163,6 +163,13 @@ then
     exit 0
 fi
 
+case "$@" in
+    start*)
+        npm.digabi-real "$@"
+        exit $?
+        ;;
+esac
+
 for retry in $(seq 5)
 do
     start_time=$(date +%s)
