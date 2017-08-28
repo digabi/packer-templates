@@ -18,10 +18,6 @@ case "${BITS}" in
         CONFIG_FILE=packer_amd64.json
         ARCH=amd64
         ;;
-    32)
-        CONFIG_FILE=packer_i386.json
-        ARCH=i386
-        ;;
     *)
         echo "Wouldn't know what to do with ${BITS} bits"
         exit 1
