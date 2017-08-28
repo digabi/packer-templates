@@ -1,7 +1,7 @@
 {
   "variables": {
     "build_id": "0",
-    "vm_name": "vagrantbox-debian-jessie-amd64",
+    "vm_name": "vagrantbox-debian-stretch-amd64",
 
     "cpu_cores": "1",
     "memory": "1024",
@@ -21,11 +21,11 @@
     "keyboard_layout": "fi",
     "locale": "en_US",
 
-    "iso_url": "http://192.168.3.31/pub/debian-8.8.0-amd64-netinst.iso",
-    "iso_checksum": "2c07ff8cc766767610566297b8729740f923735e790c8e78b718fb93923b448e",
+    "iso_url": "https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-9.1.0-amd64-netinst.iso",
+    "iso_checksum": "c9e070074de83aa22e141f59a423e5210a5019b369ef1efe61a2afd44ba8f371",
 
     "iso_checksum_type": "sha256",
-  
+
     "aws_access_key": "",
     "aws_secret_key": ""
 
