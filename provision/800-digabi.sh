@@ -258,7 +258,7 @@ Vhzuyn3GTtg1w/T6CaYVXBjcHFk=
 EOF
 
 cat >/etc/apt/sources.list.d/yarn.list <<EOF
-deb https://dl.yarnpkg.com/debian/ stable main
+deb http://dl.yarnpkg.com/debian/ stable main
 EOF
 
 
