@@ -315,64 +315,6 @@ sudo apt-mark hold yarn
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | sudo -u vagrant bash
 sudo -u vagrant /bin/bash -c ". ~/.nvm/nvm.sh; nvm install 6.11.1 ; nvm install 8.3.0 ; nvm install --lts 6.9.1"
 
-sudo -u vagrant /bin/bash -c 'find ${HOME}/.nvm -name npm -type l | while read -r path ; do mv  -v "${path}" "${path}.digabi-real"; done'
-
-cat > /usr/local/bin/npm<<'EOF'
-#!/bin/bash
-
-if ! which npm.digabi-real
-then
-    echo "WARNING: npm.digabi-real not found, should be under .nvm" 1>&2
-    echo "         Ignoring command $@"
-    exit 0
-fi
-
-case "$@" in
-    start*)
-        npm.digabi-real "$@"
-        exit $?
-        ;;
-esac
-
-for retry in $(seq 5)
-do
-    start_time=$(date +%s)
-    timeout -k 2 300 npm.digabi-real "$@"
-    status=$?
-    end_time=$(date +%s)
-    npm_printf=$(echo "$@" | sed s/%/%%/g)
-    printf "%(%T)T npm ${npm_printf} \033[34mexecution took $(expr ${end_time} - ${start_time}) seconds\033[0m\n"
-
-    [ ${status} -eq 0 ] && break
-
-    if [ ${status} -ge 124 ]
-    then
-        printf "%(%T)T npm ${npm_printf} \033[34mtimed out after five minutes\033[0m"
-    else
-        printf "%(%T)T npm ${npm_printf} \033[31mfailed\033[0m"
-    fi
-
-    if [ ${retry} -lt 5 ]
-    then
-        case "$@" in
-            install*)
-                echo " - retry after removing node_modules (${retry})"
-                rm -rf node_modules
-            ;;
-            *)
-                echo " - retry (${retry})"
-        esac
-        sleep 1
-    else
-        echo " - giving up after ${retry} tries"
-        exit 1
-    fi
-done
-
-EOF
-
-chmod +x /usr/local/bin/npm
-
 echo "I: Install finnish locale.."
 sed -i.bak -e '/fi_FI.UTF-8/s/# //' /etc/locale.gen
 locale-gen
