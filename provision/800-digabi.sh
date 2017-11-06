@@ -310,7 +310,7 @@ EOF
 
 apt-get update
 
-apt-get -y -o "Acquire::http::Pipeline-Depth=10" install ruby-dev zip nginx libpq-dev google-chrome-unstable libnss3-tools git rsync curl unzip ruby parallel uuid-runtime netcat-traditional vlc locales postgresql-9.5 postgresql-contrib-9.5 texlive-base texlive-latex-base latexmk net-tools yarn
+apt-get -y -o "Acquire::http::Pipeline-Depth=10" install ruby-dev zip nginx libpq-dev google-chrome-unstable libnss3-tools git rsync curl unzip ruby parallel uuid-runtime netcat-traditional vlc locales postgresql-9.5 postgresql-contrib-9.5 texlive-base texlive-latex-base latexmk net-tools yarn=0.27.5-1
 sudo apt-mark hold yarn
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | sudo -u vagrant bash
 sudo -u vagrant /bin/bash -c ". ~/.nvm/nvm.sh; nvm install 6.11.1 ; nvm install 8.3.0 ; nvm install --lts 6.9.1"
