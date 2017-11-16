@@ -302,6 +302,9 @@ export DEBIAN_FRONTEND="noninteractive"
 echo "I: Set kernel.unprivileged_userns_clone sysctl to 1 for Google Chrome"
 echo "kernel.unprivileged_userns_clone = 1" >> /etc/sysctl.conf
 
+echo "I: Increase max amount of open files from default 10k"
+echo "fs.file-max = 64000" >> /etc/sysctl.conf
+
 echo "I: Install Google Chrome..."
 wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
 cat >/etc/apt/sources.list.d/chrome.list <<EOF
