@@ -313,10 +313,10 @@ EOF
 
 apt-get update
 
-apt-get -y -o "Acquire::http::Pipeline-Depth=10" install ruby-dev zip nginx libpq-dev google-chrome-unstable libnss3-tools git rsync curl unzip ruby parallel uuid-runtime netcat-traditional vlc locales postgresql-9.5 postgresql-contrib-9.5 texlive-base texlive-latex-base latexmk net-tools yarn icu-devtools libgconf-2-4
-sudo apt-mark hold yarn
+apt-get -y -o "Acquire::http::Pipeline-Depth=10" install ruby-dev zip nginx libpq-dev google-chrome-unstable libnss3-tools git rsync curl unzip ruby parallel uuid-runtime netcat-traditional vlc locales postgresql-9.5 postgresql-contrib-9.5 texlive-base texlive-latex-base latexmk net-tools icu-devtools libgconf-2-4
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | sudo -u vagrant bash
 sudo -u vagrant /bin/bash -c ". ~/.nvm/nvm.sh; nvm install 6.11.1 ; nvm install 8.3.0 ; nvm install --lts 6.9.1; nvm install 8.9.3"
+sudo -u vagrant /bin/bash -c 'cd ; . ~/.nvm/nvm.sh; for v in 6.9.1 6.11.1 8.3.0 8.9.3; do nvm exec $v npm install -g yarn; done'
 
 echo "I: Install finnish locale.."
 sed -i.bak -e '/fi_FI.UTF-8/s/# //' /etc/locale.gen
