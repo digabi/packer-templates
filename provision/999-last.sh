@@ -15,6 +15,31 @@ deb http://192.168.2.49/debian-security jessie/updates main contrib non-free
 deb http://192.168.2.49/debian jessie-updates main contrib non-free
 EOF
 
+echo "I: DHCP hack to keep vmware/vagrant up to date"
+cat > /usr/local/bin/force-dhcp-refresh.sh <<EOF
+#!/bin/bash
+
+while true
+do
+        dhclient -r eth0 && dhclient eth0
+        sleep 15
+done
+EOF
+chmod +x /usr/local/bin/force-dhcp-refresh.sh
+
+cat > /etc/systemd/system/digabi-dhcp-refresh.service<<EOF
+[Unit]
+Description=dhcp refresh
+Requires=
+After=
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/force-dhcp-refresh.sh
+EOF
+
+ln -s /etc/systemd/system/digabi-dhcp-refresh.service /etc/systemd/system/multi-user.target.wants/
+
 echo "I: Remove DHCP leases..."
 rm /var/lib/dhcp/*
 
