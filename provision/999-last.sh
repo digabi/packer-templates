@@ -21,7 +21,8 @@ cat > /usr/local/bin/force-dhcp-refresh.sh <<EOF
 
 while true
 do
-        dhclient -r eth0 && dhclient eth0
+        pkill dhclient
+        dhclient eth0
         sleep 15
 done
 EOF
