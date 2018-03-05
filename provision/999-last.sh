@@ -23,7 +23,7 @@ while true
 do
         pkill dhclient
         dhclient eth0
-        sleep 15
+        sleep 5
 done
 EOF
 chmod +x /usr/local/bin/force-dhcp-refresh.sh
