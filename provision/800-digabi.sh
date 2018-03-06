@@ -324,7 +324,7 @@ locale-gen
 
 echo "I: Configure postgresql.."
 su postgres -c "createuser -d vagrant" || true
-su postgres -c  "psql -c 'alter user postgres with superuser;'"
+su postgres -c  "psql -c 'alter user vagrant with superuser;'"
 sed -i.bak '/127.0.0.1\|::1\/128/s/md5/trust/' /etc/postgresql/9.5/main/pg_hba.conf
 service postgresql restart
 
