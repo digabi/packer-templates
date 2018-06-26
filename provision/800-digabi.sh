@@ -303,7 +303,9 @@ echo "I: Set kernel.unprivileged_userns_clone sysctl to 1 for Google Chrome"
 echo "kernel.unprivileged_userns_clone = 1" >> /etc/sysctl.conf
 
 echo "I: Increase max amount of open files from default 10k"
-echo "fs.file-max = 64000" >> /etc/sysctl.conf
+echo "fs.file-max = 64000" >> /etc/sysctl.d/80-digabi-files.conf
+sed -i.bak -e 's/^fs.file-max/#&/' /etc/sysctl.d/99-sysctl.conf
+rm -f /etc/sysctl.d/99-sysctl.conf.bak
 
 echo "I: Install Google Chrome..."
 wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
@@ -320,11 +322,13 @@ sudo -u vagrant /bin/bash -c 'cd ; . ~/.nvm/nvm.sh; for v in 6.9.1 6.11.1 8.3.0 
 
 echo "I: Install finnish locale.."
 sed -i.bak -e '/fi_FI.UTF-8/s/# //' /etc/locale.gen
+rm -f /etc/locale.gen.bak
 locale-gen
 
 echo "I: Configure postgresql.."
 su postgres -c "createuser -d vagrant" || true
 su postgres -c  "psql -c 'alter user vagrant with superuser;'"
 sed -i.bak '/127.0.0.1\|::1\/128/s/md5/trust/' /etc/postgresql/9.5/main/pg_hba.conf
+rm -f /etc/postgresql/9.5/main/pg_hba.conf.bak
 service postgresql restart
 
