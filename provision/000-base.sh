@@ -42,8 +42,13 @@ rm /var/lib/dhcp/*.leases
 #cp /bin/true /lib/udev/write_net_rules
 rm -f /etc/udev/rules.d/70-persistent-net.rules
 
-# Adding a 2 sec delay to the interface up, to make the dhclient happy
-echo "pre-up sleep 5" >> /etc/network/interfaces
+# Activate additional interfaces, adding a 2 sec delay to the interface up, to make the dhclient happy
+cat >>/etc/network/interfaces<<EOF
+allow-hotplug ens32
+iface ens32 inet dhcp
+
+pre-up sleep 5
+EOF
 
 sed -i 's,^GRUB_TIMEOUT=5,GRUB_TIMEOUT=1,g' /etc/default/grub
 update-grub
