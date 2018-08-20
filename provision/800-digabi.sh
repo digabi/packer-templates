@@ -81,9 +81,9 @@ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | 
 sudo -u vagrant /bin/bash -c ". ~/.nvm/nvm.sh; nvm install 6.11.1 ; nvm install 8.3.0 ; nvm install --lts 6.9.1; nvm install 8.9.3; nvm install 8.11.3; nvm install 10.0.0"
 sudo -u vagrant /bin/bash -c 'cd ; . ~/.nvm/nvm.sh; for v in 6.9.1 6.11.1 8.3.0 8.9.3 8.11.3 10.0.0; do nvm exec $v npm install -g yarn; done'
 
-echo "I: Install finnish locale.."
-sed -i.bak -e '/fi_FI.UTF-8/s/# //' /etc/locale.gen
-rm -f /etc/locale.gen.bak
+echo "I: Install finnish & us utf-8 locales.."
+sed -i -e '/fi_FI.UTF-8/s/# //' -e '/en_US.UTF-8/s/# //' /etc/locale.gen
+echo 'LANG=en_US.UTF-8' > /etc/default/locale
 locale-gen
 
 echo "I: Configure postgresql.."
