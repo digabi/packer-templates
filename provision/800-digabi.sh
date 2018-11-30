@@ -76,7 +76,7 @@ EOF
 
 apt-get update
 
-apt-get -y -o "Acquire::http::Pipeline-Depth=10" install ruby-dev zip nginx libpq-dev google-chrome-unstable libnss3-tools git rsync curl unzip ruby parallel uuid-runtime netcat-traditional vlc locales postgresql-9.6 postgresql-contrib-9.6 texlive-base texlive-latex-base texlive-lang-european texlive-fonts-recommended texlive-fonts-extra texlive-latex-recommended texlive-latex-extra latexmk net-tools icu-devtools libgconf-2-4 tmux
+apt-get -y -o "Acquire::http::Pipeline-Depth=10" install ruby-dev zip nginx libpq-dev google-chrome-unstable libnss3-tools git rsync curl unzip ruby parallel uuid-runtime netcat-traditional vlc locales postgresql-9.6 postgresql-contrib-9.6 texlive-base texlive-latex-base texlive-lang-european texlive-fonts-recommended texlive-fonts-extra texlive-latex-recommended texlive-latex-extra latexmk net-tools icu-devtools libgconf-2-4 tmux jq
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | sudo -u vagrant bash
 sudo -u vagrant /bin/bash -c ". ~/.nvm/nvm.sh; nvm install 6.11.1 ; nvm install 8.3.0 ; nvm install --lts 6.9.1; nvm install 8.9.3; nvm install 8.11.3; nvm install 10.0.0"
 sudo -u vagrant /bin/bash -c 'cd ; . ~/.nvm/nvm.sh; for v in 6.9.1 6.11.1 8.3.0 8.9.3 8.11.3 10.0.0; do nvm exec $v npm install -g yarn; done'
