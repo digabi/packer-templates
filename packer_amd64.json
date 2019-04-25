@@ -1,7 +1,7 @@
 {
   "variables": {
     "build_id": "0",
-    "vm_name": "vagrantbox-debian-stretch-amd64",
+    "vm_name": "vagrantbox-new-debian-stretch-amd64",
 
     "cpu_cores": "1",
     "memory": "1024",
