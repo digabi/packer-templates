@@ -78,9 +78,7 @@ apt-get update
 
 apt-get -y -o "Acquire::http::Pipeline-Depth=10" install ruby-dev zip nginx libpq-dev google-chrome-unstable libnss3-tools git rsync curl unzip ruby parallel uuid-runtime netcat-traditional vlc locales postgresql-9.6 postgresql-contrib-9.6 texlive-base texlive-latex-base texlive-lang-european texlive-fonts-recommended texlive-fonts-extra texlive-latex-recommended texlive-latex-extra latexmk net-tools icu-devtools libgconf-2-4 tmux jq
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | sudo -u vagrant bash
-NODEVERSIONS="6.9.1 8.11.3 11.11.0 12.4.0 12.6.0 12.7.0"
-sudo -u vagrant /bin/bash -c ". ~/.nvm/nvm.sh; for v in ${NODEVERSIONS}; do nvm install \${v}; done; nvm alias default 8"
-sudo -u vagrant /bin/bash -c ". ~/.nvm/nvm.sh; for v in ${NODEVERSIONS}; do nvm exec \${v} npm install -g yarn; done"
+sudo -u vagrant /bin/bash -c ". ~/.nvm/nvm.sh; for v in 8.11.3 12.4.0 12.6.0 12.7.0 12.8.0; do nvm install $v; nvm exec $v npm install -g yarn; done; nvm alias default 8"
 
 echo "I: Install finnish & us utf-8 locales.."
 sed -i -e '/fi_FI.UTF-8/s/# //' -e '/en_US.UTF-8/s/# //' /etc/locale.gen
