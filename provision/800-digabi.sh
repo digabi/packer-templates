@@ -78,8 +78,9 @@ apt-get update
 
 apt-get -y -o "Acquire::http::Pipeline-Depth=10" install ruby-dev zip nginx libpq-dev google-chrome-unstable libnss3-tools git rsync curl unzip ruby parallel uuid-runtime netcat-traditional vlc locales postgresql-9.6 postgresql-contrib-9.6 texlive-base texlive-latex-base texlive-lang-european texlive-fonts-recommended texlive-fonts-extra texlive-latex-recommended texlive-latex-extra latexmk net-tools icu-devtools libgconf-2-4 tmux jq
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | sudo -u vagrant bash
-sudo -u vagrant /bin/bash -c ". ~/.nvm/nvm.sh; nvm install 6.9.1; nvm install 8.11.3; nvm install 11.11.0; nvm install 12.4.0; nvm install 12.6.0; nvm install 12.7.0; nvm alias default 8"
-sudo -u vagrant /bin/bash -c 'cd ; . ~/.nvm/nvm.sh; for v in 6.9.1 8.11.3 11.11.0 12.4.0 12.6.0 12.7.0; do nvm exec $v npm install -g yarn; done'
+NODEVERSIONS="6.9.1 8.11.3 11.11.0 12.4.0 12.6.0 12.7.0"
+sudo -u vagrant /bin/bash -c ". ~/.nvm/nvm.sh; for v in ${NODEVERSIONS}; do nvm install \${v}; done; nvm alias default 8"
+sudo -u vagrant /bin/bash -c ". ~/.nvm/nvm.sh; for v in ${NODEVERSIONS}; do nvm exec \${v} npm install -g yarn; done"
 
 echo "I: Install finnish & us utf-8 locales.."
 sed -i -e '/fi_FI.UTF-8/s/# //' -e '/en_US.UTF-8/s/# //' /etc/locale.gen
@@ -90,6 +91,6 @@ echo "I: Configure postgresql.."
 su postgres -c "createuser -d vagrant" || true
 su postgres -c  "psql -c 'alter user vagrant with superuser;'"
 sed -i.bak '/127.0.0.1\|::1\/128/s/md5/trust/' /etc/postgresql/9.6/main/pg_hba.conf
-rm -f /etc/postgresql/9.5/main/pg_hba.conf.bak
+rm -f /etc/postgresql/9.6/main/pg_hba.conf.bak
 service postgresql restart
 
