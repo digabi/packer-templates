@@ -11,7 +11,6 @@ rm -rf /var/log/installer
 
 cat > /etc/apt/sources.list << EOF
 deb http://192.168.3.32/debian stretch main contrib non-free
-deb http://192.168.3.32/debian-security stretch/updates main contrib non-free
 deb http://192.168.3.32/debian stretch-updates main contrib non-free
 EOF
 
