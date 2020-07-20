@@ -68,6 +68,9 @@ echo "kernel.unprivileged_userns_clone = 1" >> /etc/sysctl.d/81-enable-chrome-sa
 echo "I: Increase max amount of open files from default 10k"
 echo "fs.file-max = 64000" >> /etc/sysctl.d/80-digabi-files.conf
 
+echo "I: Set system timezone to Europe/Helsinki"
+timedatectl set-timezone Europe/Helsinki
+
 echo "I: Install Google Chrome..."
 wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
 cat >/etc/apt/sources.list.d/chrome.list <<EOF
@@ -89,6 +92,7 @@ echo "I: Configure postgresql.."
 su postgres -c "createuser -d vagrant" || true
 su postgres -c  "psql -c 'alter user vagrant with superuser;'"
 sed -i.bak '/127.0.0.1\|::1\/128/s/md5/trust/' /etc/postgresql/9.6/main/pg_hba.conf
+echo "TimeZone = 'Europe/Helsinki'" >> /etc/postgresql/9.6/main/pg_hba.conf
 rm -f /etc/postgresql/9.6/main/pg_hba.conf.bak
 service postgresql restart
 
