@@ -2,8 +2,9 @@
 
 set -e
 
-echo "I: Install fuse and open-vm-tools..."
 export DEBIAN_FRONTEND="noninteractive"
+
+echo "I: Install fuse and open-vm-tools..."
 apt-get -y install fuse open-vm-tools fuse
 
 echo "I: Install VMWareTools..."
