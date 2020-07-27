@@ -3,7 +3,7 @@
 set -e
 
 echo "I: Add key for dos-repository"
-apt-key add - <<EOF
+cat > /etc/apt/trusted.gpg.d/dos-repository.asc <<EOF
 -----BEGIN PGP PUBLIC KEY BLOCK-----
 Version: GnuPG v1
 
@@ -72,7 +72,7 @@ echo "I: Set system timezone to Europe/Helsinki"
 timedatectl set-timezone Europe/Helsinki
 
 echo "I: Install Google Chrome..."
-wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+wget -q -O /etc/apt/trusted.gpg.d/google-chrome.asc https://dl-ssl.google.com/linux/linux_signing_key.pub
 cat >/etc/apt/sources.list.d/chrome.list <<EOF
 deb http://dl.google.com/linux/chrome/deb/ stable main
 EOF
