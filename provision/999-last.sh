@@ -10,8 +10,8 @@ rm -f /var/lib/apt/lists/*
 rm -rf /var/log/installer
 
 cat > /etc/apt/sources.list << EOF
-deb http://192.168.3.32/debian stretch main contrib non-free
-deb http://192.168.3.32/debian stretch-updates main contrib non-free
+deb http://192.168.3.32/debian buster main contrib non-free
+deb http://192.168.3.32/debian buster-updates main contrib non-free
 EOF
 
 echo "I: DHCP hack to keep vmware/vagrant up to date"

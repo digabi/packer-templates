@@ -1,7 +1,7 @@
 {
-  "description": "Debian Stretch vagrantbox for building all things Digabi",
+  "description": "Debian Buster vagrantbox for building all things Digabi",
   "short_description": "Digabi Basebox",
-  "name": "vagrantbox-new-debian-stretch-__ARCH__",
+  "name": "vagrantbox-debian-buster-__ARCH__",
   "versions": [
     {
       "version": "__BOX_VERSION__",

@@ -77,19 +77,14 @@ cat >/etc/apt/sources.list.d/chrome.list <<EOF
 deb http://dl.google.com/linux/chrome/deb/ stable main
 EOF
 
-echo "I: Add stretch-backports repository to sources"
-cat >/etc/apt/sources.list.d/stretch-backports.list <<EOF
-deb http://deb.debian.org/debian stretch-backports main
-EOF
-
 apt-get update
 
 apt-get -y -o "Acquire::http::Pipeline-Depth=10" install ruby-dev zip nginx libpq-dev google-chrome-stable libnss3-tools git rsync curl unzip ruby parallel uuid-runtime netcat-traditional locales postgresql-9.6 postgresql-contrib-9.6 texlive-base texlive-latex-base texlive-lang-european texlive-fonts-recommended texlive-fonts-extra texlive-latex-recommended texlive-latex-extra latexmk net-tools icu-devtools libgconf-2-4 tmux jq gnupg libxss1 libxtst6 libsystemd-dev
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | sudo -u vagrant bash
 sudo -u vagrant /bin/bash -c ". ~/.nvm/nvm.sh; for v in 8.11.3 8.17.0 10.17.0 12.4.0 12.6.0 12.7.0 12.8.0 12.14.0; do nvm install \$v; nvm exec \$v npm install -g yarn; done; nvm alias default 8"
 
-echo "I: Install Go >= 1.11 from backports for Go NSA server"
-apt-get -y install -t stretch-backports golang
+echo "I: Install Go >= 1.11 for Go NSA server"
+apt-get -y install golang
 
 echo "I: Install finnish & us utf-8 locales.."
 sed -i -e '/fi_FI.UTF-8/s/# //' -e '/en_US.UTF-8/s/# //' /etc/locale.gen

@@ -1,7 +1,7 @@
 {
   "variables": {
     "build_id": "0",
-    "vm_name": "vagrantbox-new-debian-stretch-amd64",
+    "vm_name": "vagrantbox-debian-buster-amd64",
 
     "cpu_cores": "1",
     "memory": "1024",
@@ -21,8 +21,8 @@
     "keyboard_layout": "fi",
     "locale": "en_US",
 
-    "iso_url": "https://cdimage.debian.org/mirror/cdimage/archive/9.13.0/amd64/iso-cd/debian-9.13.0-amd64-netinst.iso",
-    "iso_checksum": "71c7e9eb292acc880f84605b1ca2b997f25737fe0a43fc9586f61d35cd2eb43b",
+    "iso_url": "https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-10.4.0-amd64-netinst.iso",
+    "iso_checksum": "ab3763d553330e90869487a6843c88f1d4aa199333ff16b653e60e59ac1fc60b",
 
     "iso_checksum_type": "sha256",
 
