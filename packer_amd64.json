@@ -21,7 +21,7 @@
     "keyboard_layout": "fi",
     "locale": "en_US",
 
-    "iso_url": "https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-10.4.0-amd64-netinst.iso",
+    "iso_url": "https://cdimage.debian.org/mirror/cdimage/archive/10.4.0/amd64/iso-cd/debian-10.4.0-amd64-netinst.iso",
     "iso_checksum": "ab3763d553330e90869487a6843c88f1d4aa199333ff16b653e60e59ac1fc60b",
 
     "iso_checksum_type": "sha256",
