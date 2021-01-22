@@ -79,7 +79,48 @@ EOF
 
 apt-get update
 
-apt-get -y -o "Acquire::http::Pipeline-Depth=10" install ruby-dev zip nginx libpq-dev google-chrome-stable libnss3-tools git rsync curl unzip ruby parallel uuid-runtime netcat-traditional locales postgresql-11 texlive-base texlive-latex-base texlive-lang-european texlive-fonts-recommended texlive-fonts-extra texlive-latex-recommended texlive-latex-extra latexmk net-tools icu-devtools libgconf-2-4 tmux jq gnupg libxss1 libxtst6 libsystemd-dev libx11-xcb1
+apt-get -y -o "Acquire::http::Pipeline-Depth=10" install ruby-dev zip nginx libpq-dev google-chrome-stable libnss3-tools git rsync curl unzip ruby parallel uuid-runtime netcat-traditional locales postgresql-11 texlive-base texlive-latex-base texlive-lang-european texlive-fonts-recommended texlive-fonts-extra texlive-latex-recommended texlive-latex-extra latexmk net-tools icu-devtools libgconf-2-4 tmux jq gnupg libsystemd-dev
+# Puppeteer dependencies. Update these when updating puppeteer
+# https://github.com/puppeteer/puppeteer/blob/main/docs/troubleshooting.md#chrome-headless-doesnt-launch-on-unix
+apt-get -y -o "Acquire::http::Pipeline-Depth=10" install \
+    ca-certificates \
+    fonts-liberation \
+    libappindicator3-1 \
+    libasound2 \
+    libatk-bridge2.0-0 \
+    libatk1.0-0 \
+    libc6 \
+    libcairo2 \
+    libcups2 \
+    libdbus-1-3 \
+    libexpat1 \
+    libfontconfig1 \
+    libgbm1 \
+    libgcc1 \
+    libglib2.0-0 \
+    libgtk-3-0 \
+    libnspr4 \
+    libnss3 \
+    libpango-1.0-0 \
+    libpangocairo-1.0-0 \
+    libstdc++6 \
+    libx11-6 \
+    libx11-xcb1 \
+    libxcb1 \
+    libxcomposite1 \
+    libxcursor1 \
+    libxdamage1 \
+    libxext6 \
+    libxfixes3 \
+    libxi6 \
+    libxrandr2 \
+    libxrender1 \
+    libxss1 \
+    libxtst6 \
+    lsb-release \
+    wget \
+    xdg-utils
+
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | sudo -u vagrant bash
 sudo -u vagrant /bin/bash -c ". ~/.nvm/nvm.sh; for v in 8.11.3 8.17.0 10.17.0 12.4.0 12.6.0 12.7.0 12.8.0 12.14.0; do nvm install \$v; nvm exec \$v npm install -g yarn; done; nvm alias default 8"
 
