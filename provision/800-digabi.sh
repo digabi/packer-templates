@@ -115,6 +115,7 @@ apt-get -y -o "Acquire::http::Pipeline-Depth=10" install \
     libxi6 \
     libxrandr2 \
     libxrender1 \
+    libxshmfence1 \
     libxss1 \
     libxtst6 \
     lsb-release \
