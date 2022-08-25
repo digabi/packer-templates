@@ -123,7 +123,7 @@ apt-get -y -o "Acquire::http::Pipeline-Depth=10" install \
     xdg-utils
 
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | sudo -u vagrant bash
-sudo -u vagrant /bin/bash -c ". ~/.nvm/nvm.sh; for v in 8.11.3 8.17.0 10.17.0 12.4.0 12.6.0 12.7.0 12.8.0 12.14.0 14.16.0; do nvm install \$v; nvm exec \$v npm install -g yarn; done; nvm alias default 8"
+sudo -u vagrant /bin/bash -c ". ~/.nvm/nvm.sh; for v in 8.11.3 8.17.0 10.17.0 12.4.0 12.6.0 12.7.0 12.8.0 12.14.0 14.16.0 16.14.0; do nvm install \$v; nvm exec \$v npm install -g yarn; done; nvm alias default 8"
 
 echo "I: Install Go >= 1.11 for Go NSA server"
 apt-get -y install golang
